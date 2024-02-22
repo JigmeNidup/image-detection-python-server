@@ -10,7 +10,7 @@ cors = CORS(app)
 
 @app.route('/')
 def hello_world():
-	return 'Hello World'
+	return 'Image Recognition Server'
 
 @app.route('/image',methods=['POST'])
 def process_image():
