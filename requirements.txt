@@ -1,4 +1,4 @@
 Flask == 3.0.1
 Flask-Cors == 4.0.0
 numpy == 1.26.3
-opencv-python-headless == 4.9.0.80
+opencv-contrib-python-headless == 4.9.0.80

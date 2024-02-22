@@ -3,14 +3,14 @@ from flask_cors import CORS, cross_origin
 import base64
 
 from create_image_data import imgToDir
-from image_recognize import detectFace, findFace, trainModel
+from image_recognize import findFace, trainModel
 
 app = Flask(__name__)
 cors = CORS(app)
 
 @app.route('/')
 def hello_world():
-	return 'Image Recognition Server'
+	return 'Hello World'
 
 @app.route('/image',methods=['POST'])
 def process_image():
@@ -19,15 +19,6 @@ def process_image():
         imgToDir(data["imgdata"][23:],data["count"],data["username"])
         trainModel()
         return {"status":"true"}
-    except:
-        return {"status:":"false"}
-
-@app.route('/detect',methods=['POST'])
-def detect_image():
-    try:
-        data = request.json
-        result = detectFace(data["imgdata"][23:],data["username"])
-        return {"status":"true","result":result}
     except:
         return {"status:":"false"}
 

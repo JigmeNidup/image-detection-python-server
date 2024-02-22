@@ -31,28 +31,6 @@ def trainModel():
     model.train(images, labels)
 
 # trainModel()
-
-def detectFace(img_raw,username):
-    image_data = base64.b64decode(img_raw)
-    nparr = numpy.frombuffer(image_data, numpy.uint8)
-    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    
-    face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + haar_file)
-    faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
- 
-    for (x, y, w, h) in faces:
-        face = gray[y:y + h, x:x + w]
-        face_resize = cv2.resize(face, (width, height))
-        # Try to recognize the face
-        prediction = model.predict(face_resize)
-        if prediction[1]<90:
-            if(names[prediction[0]] == username):
-                return True
-            else:
-                return False
-        else:
-            return False
             
 def findFace(img_raw):
     image_data = base64.b64decode(img_raw)
