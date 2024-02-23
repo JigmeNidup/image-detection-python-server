@@ -14,6 +14,7 @@ def imgToDir(img_raw,count,username):
     if not os.path.isdir(path):
 	    os.mkdir(path)
        # Load the base64 encoded image and convert it to bytes
+    print("done")
     image_data = base64.b64decode(img_raw)
     nparr = numpy.frombuffer(image_data, numpy.uint8)
     # Decode the image using OpenCV
@@ -31,4 +32,4 @@ def imgToDir(img_raw,count,username):
         face = gray[y:y + h, x:x + w]
         face_resize = cv2.resize(face, (width, height))
         cv2.imwrite('% s/% s.png' % (path, count), face_resize)
-    print("done")
+    
