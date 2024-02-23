@@ -11,7 +11,6 @@ def imgToDir(img_raw,count,username):
     sub_data = username
 
     path = os.path.join(datasets, sub_data)
-    print(path)
     if not os.path.isdir(path):
 	    os.mkdir(path)
        # Load the base64 encoded image and convert it to bytes
@@ -32,3 +31,4 @@ def imgToDir(img_raw,count,username):
         face = gray[y:y + h, x:x + w]
         face_resize = cv2.resize(face, (width, height))
         cv2.imwrite('% s/% s.png' % (path, count), face_resize)
+    print("done")

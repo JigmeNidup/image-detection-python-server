@@ -11,7 +11,6 @@ datasets = 'datasets'
 model = cv2.face.LBPHFaceRecognizer_create()
 
 def trainModel():
-    print("pt")
     global images, labels, names, id, model
     (images, labels, names, id) = ([], [], {}, 0)
     
